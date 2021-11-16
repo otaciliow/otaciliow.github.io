@@ -13,10 +13,10 @@ function getGitHubProfileInfos() {
 getGitHubProfileInfos()
 
 // Exibir / Ocultar a descrição de cada projeto
-const elementos = document.querySelectorAll('li');
+const elements = document.querySelectorAll('li');
 
-elementos.forEach((elementos) => {
-    elementos.addEventListener('click', function() {
+elements.forEach((elements) => {
+    elements.addEventListener('click', function() {
         this.classList.toggle('active');
     })
 })
