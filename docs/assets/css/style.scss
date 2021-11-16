@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700&display=swap');
+
+@mixin centerElements {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+}
+
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html {
+    font-size:62.5%;
+    padding:1.5rem;
+}
+
+body {
+    // background:linear-gradient(236.85deg, #6A359C 27.26%, #B589D6 96.03%);
+    background:#1C1C1C;
+    color:#E0ECFF;
+    font-family:'Poppins', sans-serif;
+}
+
+.container-main {
+    min-width:90%;
+    @include centerElements();
+    border:.2rem solid #6C63FF;
+    border-radius:.8rem;
+    padding:1.5rem 1.5rem 5rem 1.5rem;
+
+    .infos {
+        @include centerElements();
+        width:100%;
+        margin-bottom:2rem;
+
+        img {
+            width:28rem;
+            border-radius:50%;
+            margin-bottom:1.5rem;
+        }
+
+        .dados {
+            @include centerElements();
+            gap:.5rem;
+
+            h1 {
+                font-size:2.4rem;
+            }
+
+            h3 {
+                font-size:1.8rem;
+                font-weight:400;
+            }
+
+            .redes {
+                display:flex;
+                gap:1.3rem;
+
+                a {
+                    color:#6C63FF;
+                    text-decoration:none;
+                    font-size:1.4rem;
+                }
+
+                i {
+                    margin-right:.3rem;
+                }
+
+            }
+        }
+    }
+
+    .projetos {
+        @include centerElements();
+        font-size:1.4rem;
+        font-weight:400;
+
+        > span {
+            font-size:2rem;
+            font-weight:500;
+        }
+
+        ul {
+            list-style:none;
+            margin-top:1.5rem;
+            display:flex;
+            justify-content:center;
+            flex-wrap:wrap;
+            gap:2.5rem;
+        }
+        
+        li {
+            min-width:32.5rem;
+            width:40%;
+            height:5.25rem;
+            border:.1rem solid #6C63FF;
+            border-radius:.8rem;
+            padding:1rem;
+            transition:all .5s ease;
+            
+            .container-header {
+                display:flex;
+                align-items:center;
+                font-size:1.6rem;
+                margin-bottom:1.5rem;
+
+                .sumario {
+                    margin: 0 .5rem;
+                }
+            }
+
+            .content {
+                visibility:hidden;
+                opacity:0;
+                transition:all .1s ease;
+            }
+            
+            &.active {
+                height:fit-content;
+                width:80%;
+                .content {
+                    transition:all 1s ease;
+                    visibility:visible;
+                    opacity:1;
+                }
+            }
+        }
+
+    }
+}
