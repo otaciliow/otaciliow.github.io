@@ -1,210 +1,228 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;500;600;700&display=swap");
 
 @mixin centerElements {
-    display:flex;
-    align-items:center;
-    justify-content:center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 * {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 html {
-    font-size:62.5%;
-    padding:1.5rem;
+  font-size: 62.5%;
+  padding: 1.5rem;
 }
 
 body {
-    // background:linear-gradient(236.85deg, #6A359C 27.26%, #B589D6 96.03%);
-    background:#1C1C1C;
-    color:#E0ECFF;
-    font-family:'Poppins', sans-serif;
+  // background:linear-gradient(236.85deg, #6A359C 27.26%, #B589D6 96.03%);
+  background: #1c1c1c;
+  color: #e0ecff;
+  font-family: "Poppins", sans-serif;
 }
 
 .container-main {
-    min-width:90%;
+  min-width: 90%;
+  @include centerElements();
+  flex-direction: column;
+  border: 0.2rem solid #6c63ff;
+  border-radius: 0.8rem;
+  padding: 1.5rem 1.5rem 5rem 1.5rem;
+  // Foto de perfil e informações pessoais
+  .infos {
     @include centerElements();
-    flex-direction:column;
-    border:.2rem solid #6C63FF;
-    border-radius:.8rem;
-    padding:1.5rem 1.5rem 5rem 1.5rem;
-    // Foto de perfil e informações pessoais
-    .infos {
-        @include centerElements();
-        // flex-direction:column;
-        gap:0 6rem;
-        width:100vw;
-        margin-bottom:2rem;
+    // flex-direction:column;
+    gap: 0 6rem;
+    width: 100vw;
+    margin-bottom: 2rem;
+
+    img {
+      width: 28rem;
+      border-radius: 50%;
+      margin-bottom: 1.5rem;
+    }
+
+    .dados {
+      @include centerElements();
+      flex-direction: column;
+      gap: 0.5rem;
+
+      h1 {
+        font-size: 2.4rem;
+      }
+
+      h3 {
+        font-size: 1.8rem;
+        font-weight: 400;
+      }
+      // Redes sociais
+      .redes {
+        display: flex;
+        gap: 1.7rem;
+
+        a {
+          color: #6c63ff;
+          text-decoration: none;
+          font-size: 1.6rem;
+          font-weight: 500;
+
+          &:hover {
+            filter: brightness(1.3);
+            transform: scale(1.02);
+            transition: all ease 0.2s;
+          }
+        }
+        // Ícones das redes sociais
+        i {
+          margin-right: 0.3rem;
+        }
+      }
+    }
+  }
+
+  .projetos {
+    @include centerElements();
+    flex-direction: column;
+    font-size: 1.4rem;
+    font-weight: 400;
+
+    > span {
+      font-size: 2rem;
+      font-weight: 500;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2.5rem;
+    }
+    // Container dos projetos
+    li {
+      min-width: 32.5rem;
+      width: 40%;
+      height: 5.25rem;
+      border: 0.1rem solid #6c63ff;
+      border-radius: 0.8rem;
+      padding: 1rem;
+      transition: all 0.5s ease;
+      cursor: pointer;
+
+      &:hover {
+        background: #2c2c2c;
+      }
+      // Nome dos projetos + ícones
+      .container-header {
+        display: flex;
+        vertical-align: middle;
+        justify-content: space-between;
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+
+        .header-wrapper {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 2.5rem;
+          }
+        }
+
+        i {
+          font-size: 2rem;
+        }
+
+        // ícone de seta
+        .image-container img {
+          transform: rotate(-90deg);
+          transition: all 0.2s ease;
+          width: 2.8rem;
+        }
+
+        .sumario {
+          margin: 0 0.5rem;
+        }
+      }
+      // Descrição dos projetos
+      .content {
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.1s ease;
+        justify-content: center;
+
+        a {
+          display: flex;
+          text-decoration: none;
+          color: #e0ecff;
+          gap: 1rem;
+
+          span {
+            font-size: 1.6rem;
+            font-weight: 400;
+          }
+
+          &:hover {
+            filter: brightness(1.2);
+            transition: all ease 0.2s;
+          }
+        }
+
+        .dual-links {
+          display: flex;
+          align-items: center;
+          gap: 5rem;
+        }
+
+        .codepen-wrapper {
+          margin: 2rem 0;
+        }
 
         img {
-            width:28rem;
-            border-radius:50%;
-            margin-bottom:1.5rem;
+          display: none;
+          width: 100%;
+          margin: 2rem 0;
+        }
+      }
+      // Container dos projetos quando expandida
+      &.active {
+        height: fit-content;
+        width: 80%;
+        cursor: default;
+
+        .container-header img {
+          transform: rotate(0);
         }
 
-        .dados {
-            @include centerElements();
-            flex-direction:column;
-            gap:.5rem;
+        .content {
+          transition: all 1s ease;
+          visibility: visible;
+          opacity: 1;
 
-            h1 {
-                font-size:2.4rem;
-            }
+          .codepen-wrapper {
+            margin: 2rem 0;
+          }
 
-            h3 {
-                font-size:1.8rem;
-                font-weight:400;
-            }
-            // Redes sociais
-            .redes {
-                display:flex;
-                gap:1.3rem;
-
-                a {
-                    color:#6C63FF;
-                    text-decoration:none;
-                    font-size:1.6rem;
-                    font-weight:500;
-                    filter:brightness(1.3);
-                }
-                // Ícones das redes sociais
-                i {
-                    margin-right:.3rem;
-                }
-
-            }
+          img {
+            display: flex;
+          }
         }
+
+        &:hover {
+          background: #1c1c1c;
+        }
+      }
     }
-
-    .projetos {
-        @include centerElements();
-        flex-direction:column;
-        font-size:1.4rem;
-        font-weight:400;
-
-        > span {
-            font-size:2rem;
-            font-weight:500;
-        }
-
-        ul {
-            list-style:none;
-            margin-top:1.5rem;
-            display:flex;
-            justify-content:center;
-            flex-wrap:wrap;
-            gap:2.5rem;
-        }
-        // Container dos projetos
-        li {
-            min-width:32.5rem;
-            width:40%;
-            height:5.25rem;
-            border:.1rem solid #6C63FF;
-            border-radius:.8rem;
-            padding:1rem;
-            transition:all .5s ease;
-            cursor:pointer;
-
-            &:hover {
-                background:#2C2C2C;
-            }
-            // Nome dos projetos + ícones
-            .container-header {
-                display:flex;
-                vertical-align:middle;
-                justify-content:space-between;
-                font-size:1.6rem;
-                margin-bottom:1.5rem;
-
-                .header-wrapper {
-                    display:flex;
-                }
-
-                i {
-                    font-size:2rem;
-                }
-
-                // ícone de seta
-                img {
-                    transform:rotate(-90deg);
-                    transition:all .2s ease;
-                    width:2.8rem;
-                }
-
-                .sumario {
-                    margin: 0 .5rem;
-                }
-            }
-            // Descrição dos projetos
-            .content {
-                visibility:hidden;
-                opacity:0;
-                transition:all .1s ease;
-                justify-content:center;
-
-                a {
-                    display:flex;
-                    text-decoration:none;
-                    color:#E0ECFF;
-                    gap:1rem;
-
-                    span {
-                        font-size:1.6rem;
-                        font-weight:400;
-                    }
-                }
-                
-                .codepen-wrapper {
-                    margin:2rem 0;
-                }
-
-                img {
-                    display:none;
-                    width:100%;
-                    margin:2rem 0;                    
-                }
-            }
-            // Container dos projetos quando expandida
-            &.active {
-                height:fit-content;
-                width:80%;
-                cursor:default;
-
-                .container-header img {
-                    transform:rotate(0);
-                }
-
-                .content {
-                    transition:all 1s ease;
-                    visibility:visible;
-                    opacity:1;
-
-                    .codepen-wrapper {
-                        margin:2rem 0;
-                    }
-    
-                    img {
-                        display:flex;
-                    }
-                }
-
-                &:hover {
-                    background:#1C1C1C;
-                }
-            }
-        }
-
-    }
+  }
 }
 
-@media screen and (max-width:740px) {
-    .infos {
-        flex-direction:column;
-        gap:0;
-
-    }
+@media screen and (max-width: 740px) {
+  .infos {
+    flex-direction: column;
+    gap: 0;
+  }
 }
